@@ -1,13 +1,15 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import {router as authRoutes} from './routes/authRoutes.js';
+import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use('/api/auth', authRoutes);
 
 //testing api
 app.get('/', (req, res) => {
