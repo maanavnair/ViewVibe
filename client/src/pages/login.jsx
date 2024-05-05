@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { UserContext } from '../../context/userContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/userContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 

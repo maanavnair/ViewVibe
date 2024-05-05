@@ -3,9 +3,9 @@ import './index.css'
 import Login from './pages/login'
 import { Toaster } from 'react-hot-toast'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { UserContext } from '../context/userContext'
+import { UserContext } from './context/userContext'
 import Home from './pages/home'
-import Navbar from '../components/navbar'
+import Navbar from './components/navbar'
 
 const App = () => {
 
