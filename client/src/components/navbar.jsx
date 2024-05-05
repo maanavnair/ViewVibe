@@ -27,11 +27,20 @@ const Navbar = () => {
     }
 
   return (
-    <nav className='flex justify-between'>
+    <nav className='flex justify-between px-10 py-2'>
         <p>ViewVibe</p>
-        <span>
-            <button>Upload</button>
-            <button onClick={handleLogout}>Logout</button>
+        <span className='flex justify-around w-1/5'>
+            <button
+                className='border-[2px] border-blue-600 rounded px-4'
+            >
+                Upload
+            </button>
+            <button 
+                onClick={handleLogout}
+                className='border-[1px] border-black rounded bg-red-200 px-4'
+            >
+                Logout
+            </button>
         </span>
     </nav>
   )
