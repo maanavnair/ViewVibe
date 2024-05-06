@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { UserContext } from '../context/userContext';
 import { FaSearch } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import { Button } from '@radix-ui/themes';
 
 const Navbar = () => {
 
@@ -31,15 +32,13 @@ const Navbar = () => {
   return (
     <nav className='flex justify-between px-2 py-2'>
         <p className='ml-2'>ViewVibe</p>
-        <span>
+        <span className='relative'>
+            <FaSearch className='absolute left-8 top-2' />
             <input 
-                placeholder='Search'
+                placeholder='Search...'
                 type='text'
-                className='py-1 px-3 w-[30vw] border-black border-[1px] rounded-full mx-5'
+                className='py-1 px-10 w-[30vw] border-black border-[1px] rounded-full mx-5'
             />
-            <button className='rounded-full border-black border-[1px] p-2'>
-                <FaSearch />
-            </button>
         </span>
         <span className='flex justify-around w-1/5'>
             <button
@@ -50,7 +49,7 @@ const Navbar = () => {
             </button>
             <button 
                 onClick={handleLogout}
-                className='border-[1px] border-black rounded bg-red-200 px-4'
+                className='rounded bg-black text-white px-6'
             >
                 Logout
             </button>
