@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { UserContext } from '../context/userContext';
 import { FaSearch } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import { FiPlus } from "react-icons/fi";
 import { Button } from '@radix-ui/themes';
 
 const Navbar = () => {
@@ -42,14 +43,15 @@ const Navbar = () => {
         </span>
         <span className='flex justify-around w-1/5'>
             <button
-                className='border-[2px] border-blue-600 rounded px-4 flex justify-between items-center'
+                className='group border-[2px] border-blue-600 rounded-none px-4 flex justify-between items-center
+                hover:bg-blue-600 hover:text-white transition duration-100 ease-in-out'
             >
                 Upload
-                <FaPlus className='ml-1 text-blue-300'/>
+                <FiPlus className='ml-1 text-blue-600 group-hover:text-white transition duration-100 ease-in-out'/>
             </button>
             <button 
                 onClick={handleLogout}
-                className='rounded bg-black text-white px-6'
+                className='rounded-none bg-black text-white px-6'
             >
                 Logout
             </button>
