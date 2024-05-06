@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import {router as authRoutes} from './routes/authRoutes.js';
+import { router as uploadRoutes } from './routes/uploadRoutes.js'
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({credentials: true, origin: "http://localhost:5173"}));
 app.use('/api/auth', authRoutes);
+app.use('/api/upload', uploadRoutes);
 
 //testing api
 app.get('/', (req, res) => {
