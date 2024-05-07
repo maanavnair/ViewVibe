@@ -1,10 +1,11 @@
 import express from 'express';
-import { upload } from '../controllers/uploadController.js';
+import { uploadFunc } from '../controllers/uploadController.js';
 import protectRoute from '../middleware/protectRoute.js'
+import { upload } from '../middleware/multer.js';
 
 const router = express.Router();
 
 router
-.post('/', protectRoute, upload);
+.post('/', upload.single('video'), uploadFunc);
 
 export { router };

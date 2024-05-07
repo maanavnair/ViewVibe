@@ -8,6 +8,7 @@ const Upload = () => {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleFileChange = (e) => {
@@ -28,8 +29,36 @@ const Upload = () => {
             toast.error('Please enter a video description');
             return;
         }
-        console.log({title, desc});
-        navigate('/');
+
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('desc', desc);
+        formData.append('video', selectedFile);
+
+        setLoading(true);
+
+        try{
+            const res = await fetch('http://localhost:3000/api/upload', {
+                method: 'POST',
+                body: formData,
+                credentials: 'include'
+            })
+    
+            const data = await res.json();
+            if(data.error){
+                throw new Error(data.error);
+            }
+            else{
+                toast.success('Video Uploaded!');
+                navigate('/');
+            }
+        }
+        catch(error){
+            toast.error(error.message);
+        }
+        finally{
+            setLoading(false);
+        }
     }
 
   return (
@@ -70,12 +99,19 @@ const Upload = () => {
                 className='w-[80vw] border-[1px] border-black rounded-none px-2 py-2 mb-5'
                 />
             </span>
+            {!loading && 
             <button className='bg-black text-white px-8 py-2 w-[80vw] flex justify-center'>
                 <span className='flex items-center text-xl'>
                     Upload
                     <MdFileUpload className='ml-1' />
                 </span>
             </button>
+            }
+            {loading && 
+                <button>
+                    <Spinner />
+                </button>
+            }
         </form>
     </div>
   )
