@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { UserContext } from '../context/userContext';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImage from '../assets/login-img.png';
+import { Button } from "@/components/ui/button"
 
 const Login = () => {
 
@@ -51,7 +52,7 @@ const Login = () => {
                     name='email' 
                     type='text'
                     placeholder='Email'
-                    className='border-black border-[1px] mb-10 py-2 px-3 w-[30vw] bg-white'
+                    className='border-black border-[1px] mb-10 py-2 px-3 w-[30vw]'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
@@ -62,14 +63,14 @@ const Login = () => {
                     name='password'
                     type='password'
                     placeholder='Password'
-                    className='border-black border-[1px] mb-10 py-2 px-3 w-[30vw] bg-white'
+                    className='border-black border-[1px] mb-10 py-2 px-3 w-[30vw]'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} 
                 />
             </span>
-            <button className='border-2 bg-black mt-5 py-2 w-[30vw] text-white'>
+            <Button className='w-[30vw]'>
                 Login
-            </button>
+            </Button>
             <span className='mt-2'>
                 Are you new?{" "}
                 <Link to='/signup' className='text-blue-600 hover:underline'>

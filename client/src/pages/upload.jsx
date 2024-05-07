@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { MdFileUpload } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
+import { Button } from "@/components/ui/button"
+import { Loader2 } from "lucide-react"
 
 const Upload = () => {
 
@@ -100,17 +102,17 @@ const Upload = () => {
                 />
             </span>
             {!loading && 
-            <button className='bg-black text-white px-8 py-2 w-[80vw] flex justify-center'>
+            <Button className='w-[80vw]'>
                 <span className='flex items-center text-xl'>
                     Upload
                     <MdFileUpload className='ml-1' />
                 </span>
-            </button>
+            </Button>
             }
             {loading && 
-                <button>
-                    <span className="loading loading-spinner loading-lg"></span>
-                </button>
+                <Button disabled className='w-[80vw]'>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                </Button>
             }
         </form>
     </div>

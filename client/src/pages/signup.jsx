@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
 import signupImage from '../assets/signup-img.png'
 import toast from 'react-hot-toast';
+import { Button } from "@/components/ui/button"
 
 
 const Signup = () => {
@@ -115,9 +116,9 @@ const Signup = () => {
                     onChange={(e) => setConfirm(e.target.value)}
                 />
             </span>
-            <button className='border-2 bg-black mt-5 py-2 w-[30vw] text-white'>
-                Signup
-            </button>
+            <Button className='w-[30vw]'>
+              Signup
+            </Button>
             <span className='mt-2'>
                 Already have an account?{" "}
                 <Link to='/login' className='text-blue-600 hover:underline'>
