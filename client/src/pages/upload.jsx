@@ -4,6 +4,8 @@ import { MdFileUpload } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
+import { Textarea } from "@/components/ui/textarea"
+import { Input } from "@/components/ui/input"
 
 const Upload = () => {
 
@@ -73,32 +75,32 @@ const Upload = () => {
             className='flex flex-col items-center justify-center'>
             <span className='flex flex-col'>
                 <label htmlFor='video-name' className='mb-1' >Video Title</label>
-                <input 
+                <Input 
                     name='video-name'
                     placeholder='Video Title...'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className='w-[80vw] border-[1px] border-black rounded-none px-2 py-2 mb-5 bg-white'
+                    className='w-[80vw] border-2 px-2 py-2 mb-5'
                 />
             </span>
             <span className='flex flex-col'>
                 <label htmlFor='video-desc' className='mb-1'>Video Description</label>
-                <textarea 
+                <Textarea 
                     name='video-desc'
                     placeholder='Video Description...'
                     value={desc}
                     onChange={(e) => setDesc(e.target.value)}
-                    className='w-[80vw] border-[1px] border-black rounded-none px-2 py-2 mb-5 h-[20vh] bg-white'
+                    className='w-[80vw] border-2 px-2 py-2 mb-5'
                 />
             </span>
             <span className='flex flex-col'>
                 <label htmlFor='video' className='mb-1'>Upload Video</label>
-                <input
+                <Input
                 name='video'
                 type="file"
                 accept="video/*"
                 onChange={handleFileChange}
-                className='w-[80vw] border-[1px] border-black rounded-none px-2 py-2 mb-5 bg-white'
+                className='w-[80vw] border-2 px-2 py-2 mb-5'
                 />
             </span>
             {!loading && 

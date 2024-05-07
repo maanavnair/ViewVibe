@@ -4,6 +4,7 @@ import { UserContext } from '../context/userContext';
 import signupImage from '../assets/signup-img.png'
 import toast from 'react-hot-toast';
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 
 const Signup = () => {
@@ -63,55 +64,55 @@ const Signup = () => {
             </h1>
             <span className='flex flex-col'>
               <label htmlFor='name' className='mb-1 text-orange-700'>Name</label>
-              <input
+              <Input
                   name='name' 
                   type='text'
-                  placeholder='name'
-                  className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw] bg-white'
+                  placeholder='Name'
+                  className='mb-5 py-2 px-3 w-[30vw] border-2'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
               />
             </span>
             <span className='flex flex-col'>
               <label htmlFor='username' className='mb-1 text-orange-700'>Username</label>
-              <input
+              <Input
                   name='username' 
                   type='text'
                   placeholder='Username'
-                  className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw] bg-white'
+                  className='mb-5 py-2 px-3 w-[30vw] border-2'
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
             </span>
             <span className='flex flex-col'>
                 <label htmlFor='email' className='mb-1 text-orange-700'>Email</label>
-                <input
+                <Input
                     name='email' 
                     type='text'
                     placeholder='Email'
-                    className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw] bg-white'
+                    className='mb-5 py-2 px-3 w-[30vw] border-2'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </span>
             <span className='flex flex-col'>
                 <label htmlFor='password' className='mb-1 text-orange-700'>Password</label>
-                <input
+                <Input
                     name='password'
                     type='password'
                     placeholder='Password'
-                    className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw] bg-white'
+                    className='mb-5 py-2 px-3 w-[30vw] border-2'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} 
                 />
             </span>
             <span className='flex flex-col'>
                 <label htmlFor='confirm' className='mb-1 text-orange-700'>Confirm Password</label>
-                <input
+                <Input
                     name='confirm' 
                     type='password'
                     placeholder='Confirm Password'
-                    className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw] bg-white'
+                    className='mb-5 py-2 px-3 w-[30vw] border-2'
                     value={confirm}
                     onChange={(e) => setConfirm(e.target.value)}
                 />

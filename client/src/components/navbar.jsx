@@ -5,7 +5,10 @@ import { UserContext } from '../context/userContext';
 import { FaSearch } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator"
+
 
 const Navbar = () => {
 
@@ -36,14 +39,15 @@ const Navbar = () => {
     }
 
   return (
-    <nav className='flex justify-between px-2 py-2'>
+    <>
+    <nav className='flex items-center justify-between px-2 py-4'>
         <p className='ml-2'>ViewVibe</p>
         <span className='relative'>
-            <FaSearch className='absolute left-8 top-2' />
-            <input 
+            <FaSearch className='absolute left-8 top-3' />
+            <Input 
                 placeholder='Search...'
                 type='text'
-                className='py-1 px-10 w-[30vw] border-black border-[1px] rounded-full mx-5 bg-white'
+                className='py-1 px-10 w-[30vw] border-2 rounded-full mx-5'
             />
         </span>
         <span className='flex justify-around w-1/5'>
@@ -63,6 +67,8 @@ const Navbar = () => {
             </Button>
         </span>
     </nav>
+    <Separator className='mb-2 shadow-xl' />
+    </>
   )
 }
 

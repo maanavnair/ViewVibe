@@ -4,6 +4,7 @@ import { UserContext } from '../context/userContext';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImage from '../assets/login-img.png';
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 const Login = () => {
 
@@ -48,22 +49,22 @@ const Login = () => {
             </h1>
             <span className='flex flex-col'>
                 <label htmlFor='email' className='mb-1 text-orange-700'>Email</label>
-                <input
+                <Input
                     name='email' 
                     type='text'
                     placeholder='Email'
-                    className='border-black border-[1px] mb-10 py-2 px-3 w-[30vw]'
+                    className='w-[30vw] border-2 mb-10'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </span>
             <span className='flex flex-col'>
                 <label htmlFor='password' className='mb-1 text-orange-700'>Password</label>
-                <input
+                <Input
                     name='password'
                     type='password'
                     placeholder='Password'
-                    className='border-black border-[1px] mb-10 py-2 px-3 w-[30vw]'
+                    className='w-[30vw] border-2 mb-10'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} 
                 />
