@@ -62,8 +62,8 @@ const Upload = () => {
     }
 
   return (
-    <div className='min-h-screen'>
-        <h1 className='text-2xl text-center font-bold mt-5 mb-10'>
+    <div className='py-5'>
+        <h1 className='text-2xl text-center font-bold mb-10'>
             Upload
         </h1>
         <form 
@@ -76,7 +76,7 @@ const Upload = () => {
                     placeholder='Video Title...'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className='w-[80vw] border-[1px] border-black rounded-none px-2 py-2 mb-5'
+                    className='w-[80vw] border-[1px] border-black rounded-none px-2 py-2 mb-5 bg-white'
                 />
             </span>
             <span className='flex flex-col'>
@@ -86,7 +86,7 @@ const Upload = () => {
                     placeholder='Video Description...'
                     value={desc}
                     onChange={(e) => setDesc(e.target.value)}
-                    className='w-[80vw] border-[1px] border-black rounded-none px-2 py-2 mb-5 h-[20vh]'
+                    className='w-[80vw] border-[1px] border-black rounded-none px-2 py-2 mb-5 h-[20vh] bg-white'
                 />
             </span>
             <span className='flex flex-col'>
@@ -96,7 +96,7 @@ const Upload = () => {
                 type="file"
                 accept="video/*"
                 onChange={handleFileChange}
-                className='w-[80vw] border-[1px] border-black rounded-none px-2 py-2 mb-5'
+                className='w-[80vw] border-[1px] border-black rounded-none px-2 py-2 mb-5 bg-white'
                 />
             </span>
             {!loading && 
@@ -109,7 +109,7 @@ const Upload = () => {
             }
             {loading && 
                 <button>
-                    <Spinner />
+                    <span className="loading loading-spinner loading-lg"></span>
                 </button>
             }
         </form>

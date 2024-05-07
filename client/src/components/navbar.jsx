@@ -44,7 +44,7 @@ const Navbar = () => {
             <input 
                 placeholder='Search...'
                 type='text'
-                className='py-1 px-10 w-[30vw] border-black border-[1px] rounded-full mx-5'
+                className='py-1 px-10 w-[30vw] border-black border-[1px] rounded-full mx-5 bg-white'
             />
         </span>
         <span className='flex justify-around w-1/5'>

@@ -66,7 +66,7 @@ const Signup = () => {
                   name='name' 
                   type='text'
                   placeholder='name'
-                  className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw]'
+                  className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw] bg-white'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
               />
@@ -77,7 +77,7 @@ const Signup = () => {
                   name='username' 
                   type='text'
                   placeholder='Username'
-                  className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw]'
+                  className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw] bg-white'
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
@@ -88,7 +88,7 @@ const Signup = () => {
                     name='email' 
                     type='text'
                     placeholder='Email'
-                    className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw]'
+                    className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw] bg-white'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
@@ -99,7 +99,7 @@ const Signup = () => {
                     name='password'
                     type='password'
                     placeholder='Password'
-                    className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw]'
+                    className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw] bg-white'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} 
                 />
@@ -110,7 +110,7 @@ const Signup = () => {
                     name='confirm' 
                     type='password'
                     placeholder='Confirm Password'
-                    className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw]'
+                    className='border-black border-[1px] mb-5 py-2 px-3 w-[30vw] bg-white'
                     value={confirm}
                     onChange={(e) => setConfirm(e.target.value)}
                 />
