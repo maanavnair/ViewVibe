@@ -1,5 +1,7 @@
 import { Video } from "../models/Video.js";
 import { cloudinary } from "../utils/cloudinary.js";
+import fs from 'fs';
+import path from 'path';
 
 const uploadFunc = async (req, res) => {
     try {
@@ -19,9 +21,16 @@ const uploadFunc = async (req, res) => {
             return res.status(500).json({ error: 'Error uploading video to Cloudinary' });
         }
 
+        fs.unlink(req.file.path, (err) => {
+            if (err) {
+                console.error('Error deleting file:', err);
+            }
+        });
+
         const newVid = new Video({
             title: req.body.title,
             desc: req.body.desc,
+            userId: req.body.userId,
             videoLink: result.secure_url
         });
         newVid.save()

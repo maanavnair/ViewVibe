@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 const videoSchema = mongoose.Schema({
     title:{
@@ -7,6 +7,11 @@ const videoSchema = mongoose.Schema({
     },
     desc:{
         type: String,
+        required: true
+    },
+    userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     videoLink:{

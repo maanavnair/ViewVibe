@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast';
 import { MdFileUpload } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
+import { UserContext } from '@/context/userContext';
 
 const Upload = () => {
 
@@ -13,6 +14,7 @@ const Upload = () => {
     const [desc, setDesc] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
     const [loading, setLoading] = useState(false);
+    const {user} = useContext(UserContext);
     const navigate = useNavigate();
 
     const handleFileChange = (e) => {
@@ -37,6 +39,7 @@ const Upload = () => {
         const formData = new FormData();
         formData.append('title', title);
         formData.append('desc', desc);
+        formData.append('userId', user._id);
         formData.append('video', selectedFile);
 
         setLoading(true);
