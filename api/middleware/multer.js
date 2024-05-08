@@ -7,12 +7,15 @@ const __dirname = path.dirname(__filename);
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, path.resolve(__dirname, '../temp')); // specify the destination folder
+        cb(null, path.resolve(__dirname, '../uploads')); // specify the destination folder
     },
-    filename: function(req, file, cb){
-        cb(null, file.originalname);
+    filename: function(req, file, cb) {
+        // Modify the filename to prevent conflicts
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, uniqueSuffix + '-' + file.originalname);
     }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage }).fields([{ name: 'video', maxCount: 1 }, { name: 'thumbnail', maxCount: 1 }]);
+
 export { upload };

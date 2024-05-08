@@ -1,50 +1,58 @@
+
 import { Video } from "../models/Video.js";
 import { cloudinary } from "../utils/cloudinary.js";
 import fs from 'fs';
-import path from 'path';
 
 const uploadFunc = async (req, res) => {
     try {
-        if (!req.file || !req.file.path) {
-            return res.status(400).json({ error: 'No file uploaded or invalid file path' });
+        if (!req.files || !req.files.video || !req.files.thumbnail) {
+            return res.status(400).json({ error: 'No files uploaded or invalid file paths' });
         }
 
-        console.log("This is the file", req.file);
-        console.log("This is the bodyr", req.body);
-        //upload file to cloudinary
-        const result = await cloudinary.uploader.upload(req.file.path, {
+        console.log("This is the video file", req.files.video[0]);
+        console.log("This is the thumbnail file", req.files.thumbnail[0]);
+        console.log("This is the body", req.body);
+
+        // Upload video file to Cloudinary
+        const videoResult = await cloudinary.uploader.upload(req.files.video[0].path, {
             resource_type: 'video'
         });
 
-        // Check if Cloudinary upload was successful
-        if (!result || !result.secure_url) {
-            return res.status(500).json({ error: 'Error uploading video to Cloudinary' });
+        // Upload thumbnail file to Cloudinary
+        const thumbnailResult = await cloudinary.uploader.upload(req.files.thumbnail[0].path, {
+            resource_type: 'image'
+        });
+
+        // Check if Cloudinary uploads were successful
+        if (!videoResult.secure_url || !thumbnailResult.secure_url) {
+            return res.status(500).json({ error: 'Error uploading video or thumbnail to Cloudinary' });
         }
 
-        fs.unlink(req.file.path, (err) => {
+        // Delete temporary files
+        fs.unlink(req.files.video[0].path, (err) => {
             if (err) {
-                console.error('Error deleting file:', err);
+                console.error('Error deleting video file:', err);
             }
         });
 
+        fs.unlink(req.files.thumbnail[0].path, (err) => {
+            if (err) {
+                console.error('Error deleting thumbnail file:', err);
+            }
+        });
+
+        // Save video details to database
         const newVid = new Video({
             title: req.body.title,
             desc: req.body.desc,
             userId: req.body.userId,
-            videoLink: result.secure_url
+            videoLink: videoResult.secure_url,
+            thumbnailLink: thumbnailResult.secure_url
         });
-        newVid.save()
-        .then(savedVideo => {
-            if (savedVideo) {
-                return res.status(200).json({ message: 'Video uploaded successfully', videoUrl: result.secure_url });
-            } else {
-                return res.status(400).json({ error: "Couldn't save data to database" });
-            }
-        })
-        .catch(err => {
-            console.error('Error saving video to database:', err);
-            return res.status(500).json({ error: 'Error saving video to database' });
-        });
+
+        await newVid.save();
+
+        return res.status(200).json({ message: 'Video uploaded successfully', videoUrl: videoResult.secure_url });
     } 
     catch (error) {
         console.error('Error uploading video:', error);

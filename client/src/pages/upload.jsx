@@ -12,19 +12,29 @@ const Upload = () => {
 
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
-    const [selectedFile, setSelectedFile] = useState(null);
+    const [videoFile, setVideoFile] = useState(null);
+    const [thumbnailFile, setThumbnailFile] = useState(null);
     const [loading, setLoading] = useState(false);
     const {user} = useContext(UserContext);
     const navigate = useNavigate();
 
-    const handleFileChange = (e) => {
-        setSelectedFile(e.target.files[0]);
+    const handleFileChange = (e, type) => {
+        const file = e.target.files[0];
+        if (type === 'video') {
+            setVideoFile(file);
+        } else if (type === 'thumbnail') {
+            setThumbnailFile(file);
+        }
     }
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        if(!selectedFile){
+        if(!videoFile){
             toast.error('Please select a video File');
+            return;
+        }
+        if(!thumbnailFile){
+            toast.error('Please select a thumbnail for the video');
             return;
         }
         if(!title){
@@ -40,7 +50,8 @@ const Upload = () => {
         formData.append('title', title);
         formData.append('desc', desc);
         formData.append('userId', user._id);
-        formData.append('video', selectedFile);
+        formData.append('thumbnail', thumbnailFile);
+        formData.append('video', videoFile);
 
         setLoading(true);
 
@@ -75,7 +86,8 @@ const Upload = () => {
         </h1>
         <form 
             onSubmit={handleSubmit}
-            className='flex flex-col items-center justify-center'>
+            className='flex flex-col items-center justify-center'
+            >
             <span className='flex flex-col'>
                 <label htmlFor='video-name' className='mb-1' >Video Title</label>
                 <Input 
@@ -102,7 +114,17 @@ const Upload = () => {
                 name='video'
                 type="file"
                 accept="video/*"
-                onChange={handleFileChange}
+                onChange={(e) => handleFileChange(e, 'video')}
+                className='w-[80vw] border-2 px-2 py-2 mb-5'
+                />
+            </span>
+            <span className='flex flex-col'>
+                <label htmlFor='thumbnail' className='mb-1'>Upload Thumbnail</label>
+                <Input
+                name='thumbnail'
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleFileChange(e, 'thumbnail')}
                 className='w-[80vw] border-2 px-2 py-2 mb-5'
                 />
             </span>
