@@ -49,65 +49,63 @@ const Navbar = () => {
         navigate('/upload');
     }
 
-    /*<Button variant='outline' className='flex items-center justify-center ml-2'>
-                <RxHamburgerMenu />
-            </Button>*/
-
   return (
     <>
-    <nav className='flex items-center justify-between px-2 py-4'>
+    <nav className='flex items-center w-[100vw] px-2 py-4'>
         <span className='flex items-center'>
-        <Sheet>
-            <SheetTrigger asChild>
-                <Button variant='outline' className='flex items-center justify-center ml-2'>
-                    <RxHamburgerMenu />
-                </Button>
-            </SheetTrigger>
-        <SheetContent side="left">
-            <SheetHeader>
-                <SheetTitle>Edit profile</SheetTitle>
-                <SheetDescription>
-                    Make changes to your profile here. Click save when you're done.
-                </SheetDescription>
-            </SheetHeader>
-            <Button>
-                Upload
-            </Button>
-            <Button>
-                Logout
-            </Button>
-            <SheetFooter>
-                <SheetClose asChild>
-                    <Button type="submit">Save changes</Button>
-                </SheetClose>
-            </SheetFooter>
-        </SheetContent>
-        </Sheet>
+            <Sheet>
+                <SheetTrigger asChild>
+                    <Button variant='outline' className='flex items-center justify-center ml-2'>
+                        <RxHamburgerMenu />
+                    </Button>
+                </SheetTrigger>
+                <SheetContent side="left">
+                    <SheetHeader>
+                        <SheetTitle className='text-center text-2xl font-bold'>
+                            ViewVibe
+                        </SheetTitle>
+                        <Separator />
+                    </SheetHeader>
+                    <span className='flex flex-col mt-5'>
+                        <Button variant='outline'
+                            className='w-full border-none mb-2'
+                            onClick = {() => (navigate('/'))}
+                        >
+                            Home
+                        </Button>
+                        <Separator className='mb-5' />
+                        <h1 className='text-center font-bold mb-1'>
+                            User
+                        </h1>
+                        <Button variant='outline'
+                            className='w-full border-none mb-2'
+                        >
+                            My Videos
+                        </Button>
+                        <Button variant='outline' 
+                            className='w-full border-none mb-2'
+                            onClick={handleUpload}
+                        >
+                            Upload
+                        </Button>
+                        <Button variant='outline'
+                            className='w-full border-none mb-2'
+                            onClick={handleLogout}
+                        >
+                            Logout
+                        </Button>
+                    </span>
+                </SheetContent>
+            </Sheet>
             <p className='ml-5'>ViewVibe</p>
         </span>
-        <span className='relative'>
+        <span className='relative ml-[20vw]'>
             <FaSearch className='absolute left-8 top-3' />
             <Input 
                 placeholder='Search...'
                 type='text'
-                className='py-1 px-10 w-[30vw] border-2 rounded-full mx-5'
+                className='py-1 px-10 w-[30vw] border-2 rounded-full mx-5 '
             />
-        </span>
-        <span className='flex justify-around w-1/5'>
-            <Button
-                onClick={handleUpload}
-                variant='outline'
-                className='w-[8vw] border-2'
-            >
-                Upload
-                <FiPlus className='ml-1 text-blue-600 group-hover:text-white transition duration-300 ease-in-out'/>
-            </Button>
-            <Button 
-                onClick={handleLogout}
-                className='w-[8vw]'
-            >
-                Logout
-            </Button>
         </span>
     </nav>
     <Separator className='mb-2 shadow-xl' />
