@@ -8,6 +8,17 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator"
+import { RxHamburgerMenu } from "react-icons/rx";
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+  } from "@/components/ui/sheet"
 
 
 const Navbar = () => {
@@ -38,10 +49,42 @@ const Navbar = () => {
         navigate('/upload');
     }
 
+    /*<Button variant='outline' className='flex items-center justify-center ml-2'>
+                <RxHamburgerMenu />
+            </Button>*/
+
   return (
     <>
     <nav className='flex items-center justify-between px-2 py-4'>
-        <p className='ml-2'>ViewVibe</p>
+        <span className='flex items-center'>
+        <Sheet>
+            <SheetTrigger asChild>
+                <Button variant='outline' className='flex items-center justify-center ml-2'>
+                    <RxHamburgerMenu />
+                </Button>
+            </SheetTrigger>
+        <SheetContent side="left">
+            <SheetHeader>
+                <SheetTitle>Edit profile</SheetTitle>
+                <SheetDescription>
+                    Make changes to your profile here. Click save when you're done.
+                </SheetDescription>
+            </SheetHeader>
+            <Button>
+                Upload
+            </Button>
+            <Button>
+                Logout
+            </Button>
+            <SheetFooter>
+                <SheetClose asChild>
+                    <Button type="submit">Save changes</Button>
+                </SheetClose>
+            </SheetFooter>
+        </SheetContent>
+        </Sheet>
+            <p className='ml-5'>ViewVibe</p>
+        </span>
         <span className='relative'>
             <FaSearch className='absolute left-8 top-3' />
             <Input 
