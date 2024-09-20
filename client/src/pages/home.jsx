@@ -4,6 +4,7 @@ import Navbar from '../components/navbar'
 const Home = () => {
 
   const [videos, setVideos] = useState([]);
+  const [isVideos, setIsVideos] = useState(true);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -14,8 +15,11 @@ const Home = () => {
 
       const data = await res.json();
       setVideos(data.videos);
-      console.log(data);
-      console.log(videos)
+      console.log("Data: ",data);
+      console.log("Videos: ", videos)
+      if(data.error === "No Videos Found"){
+        setIsVideos(false);
+      }
     }
 
     fetchVideos();
@@ -23,7 +27,7 @@ const Home = () => {
 
   return (
     <div className='px-5'>
-      {
+      {isVideos &&
         videos.map((video) => (
           <div key={video.id}>
             <img src={video.thumbnailLink} />

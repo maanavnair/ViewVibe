@@ -75,7 +75,7 @@ const Navbar = () => {
                         </Button>
                         <Separator className='mb-5' />
                         <h1 className='text-center font-bold mb-1'>
-                            User
+                            {user.name}
                         </h1>
                         <Button variant='outline'
                             className='w-full border-none mb-2'
