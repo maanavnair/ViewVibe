@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
   const [isVideos, setIsVideos] = useState(true);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const fetchVideos = async () => {
     setLoading(true);
@@ -54,13 +57,26 @@ const Home = () => {
 
   console.log(videos);
 
+  const handleVideoClick = (id) => {
+    navigate(`/video/${id}`);
+  }
+
   return (
     <div className='px-5'>
       {videos.length > 0 ? (
         videos.map((video) => (
           <div key={video._id} className='mb-10'>
-            <img src={video.thumbnailLink} className='rounded-md h-[44vh] w-[35vw]' />
-            <h1>{video.title}</h1>
+            <img 
+              src={video.thumbnailLink} 
+              className='rounded-md h-[44vh] w-[35vw] cursor-pointer'
+              onClick={() => handleVideoClick(video._id)} 
+            />
+            <h1
+              className='cursor-pointer'
+              onClick={() => handleVideoClick(video._id)}
+            >
+              {video.title}
+            </h1>
             <p>Views: {video.views}</p>
             <p>{video.username}</p>
           </div>
