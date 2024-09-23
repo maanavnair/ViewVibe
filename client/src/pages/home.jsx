@@ -57,7 +57,11 @@ const Home = () => {
 
   console.log(videos);
 
-  const handleVideoClick = (id) => {
+  const handleVideoClick = async (id) => {
+    await fetch(`http://localhost:3000/api/video/views/${id}`, {
+      method: 'POST',
+      credentials: 'include',
+    });
     navigate(`/video/${id}`);
   }
 

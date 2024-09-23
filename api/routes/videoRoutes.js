@@ -1,10 +1,12 @@
 import express from 'express';
-import { getAllVideos } from '../controllers/videoController.js';
+import { getAllVideos, getVideo, incViews } from '../controllers/videoController.js';
 
 const router = express.Router();
 
 router
-    .get('/', getAllVideos);
+    .get('/', getAllVideos)
+    .get('/:id', getVideo)
+    .post('/views/:id', incViews)
 
 
 export { router };
