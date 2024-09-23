@@ -14,6 +14,10 @@ const videoSchema = mongoose.Schema({
         ref: 'User',
         required: true
     },
+    username:{
+        type: String,
+        required: true
+    },
     views: {
         type: Number,
         default: 0

@@ -30,9 +30,10 @@ const Home = () => {
       {isVideos &&
         videos.map((video) => (
           <div key={video.id}>
-            <img src={video.thumbnailLink} />
+            <img src={video.thumbnailLink} className='rounded-md' />
             <h1>{video.title}</h1>
             <p>Views: {video.views}</p>
+            <p>{video.username}</p>
           </div>
         ))
       }

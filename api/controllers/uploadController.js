@@ -1,6 +1,7 @@
 
 import { Video } from "../models/Video.js";
 import { cloudinary } from "../utils/cloudinary.js";
+import { User } from "../models/User.js";
 import fs from 'fs';
 
 const uploadFunc = async (req, res) => {
@@ -41,11 +42,14 @@ const uploadFunc = async (req, res) => {
             }
         });
 
+        const user = await User.findById(req.body.userId);
+
         // Save video details to database
         const newVid = new Video({
             title: req.body.title,
             desc: req.body.desc,
             userId: req.body.userId,
+            username: user.username,
             videoLink: videoResult.secure_url,
             thumbnailLink: thumbnailResult.secure_url
         });
