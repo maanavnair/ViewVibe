@@ -79,6 +79,7 @@ const Navbar = () => {
                         </h1>
                         <Button variant='outline'
                             className='w-full border-none mb-2'
+                            onClick={() => navigate(`/myvideos/${user._id}`)}
                         >
                             My Videos
                         </Button>
@@ -97,7 +98,9 @@ const Navbar = () => {
                     </span>
                 </SheetContent>
             </Sheet>
-            <p className='ml-5'>ViewVibe</p>
+            <p className='ml-5 cursor-pointer' onClick={() => navigate('/')}>
+                ViewVibe
+            </p>
         </span>
         <span className='relative ml-[20vw]'>
             <FaSearch className='absolute left-8 top-3' />

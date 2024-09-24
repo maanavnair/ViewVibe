@@ -9,6 +9,7 @@ import Home from './pages/home'
 import Navbar from './components/navbar'
 import Upload from './pages/upload'
 import Video from './pages/video'
+import MyVideos from './pages/myvideos'
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/' element={user ? <Home /> : <Navigate to='/login' />} />
         <Route path='/upload' element={user ? <Upload /> : <Navigate to='/login' />} />
         <Route path='/video/:id' element={user ? <Video /> : <Navigate to='/login' />} />
+        <Route path='/myvideos/:id' element={user ? <MyVideos /> : <Navigate to='/login' />} />
       </Routes>
       <Toaster />
     </>

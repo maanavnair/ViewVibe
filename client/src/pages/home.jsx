@@ -55,8 +55,6 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [loading, isVideos]);
 
-  console.log(videos);
-
   const handleVideoClick = async (id) => {
     await fetch(`http://localhost:3000/api/video/views/${id}`, {
       method: 'POST',

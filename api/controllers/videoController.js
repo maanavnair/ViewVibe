@@ -58,4 +58,37 @@ const incViews = async (req, res) => {
     }
 }
 
-export { getAllVideos, getVideo, incViews };
+const userVideos = async (req, res) => {
+    const id = req.params.id;
+    try{
+        const videos = await Video.find({userId: id}).sort({createdAt: -1});
+
+        if(!videos || videos.length === 0){
+            return res.status(400).json({error: "No Videos Found"});
+        }
+
+        return res.status(200).json({videos});
+    }
+    catch(error){
+        console.error("Error fetching user videos: ", error);
+        return res.status(500).json({error: 'Internal Server Error'});
+    }
+}
+
+const deleteVideo = async(req, res) => {
+    const id = req.params.id;
+    try{
+        const video = await Video.findByIdAndDelete(id);
+
+        if(!video){
+            return res.status(400).json({error: 'Video not found'});
+        }
+        return res.status(200).json({message: 'Video Deleted Successfully'});
+    }
+    catch(error){
+        console.error("Error deleting Video: ", error);
+        return res.status(500).json({error: 'Internal Server Error'});
+    }
+}
+
+export { getAllVideos, getVideo, incViews, userVideos, deleteVideo };
