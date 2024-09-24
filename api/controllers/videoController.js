@@ -1,4 +1,5 @@
 import { Video } from "../models/Video.js";
+import { cloudinary } from "../utils/cloudinary.js";
 
 
 const getAllVideos = async (req, res) => {
@@ -78,11 +79,19 @@ const userVideos = async (req, res) => {
 const deleteVideo = async(req, res) => {
     const id = req.params.id;
     try{
-        const video = await Video.findByIdAndDelete(id);
+        const video = await Video.findById(id);
 
         if(!video){
             return res.status(400).json({error: 'Video not found'});
         }
+
+        const videoPublicId = video.videoLink.split('/').pop().split('.')[0];
+        const thumbnailPublicId = video.thumbnailLink.split('/').pop().split('.')[0];
+
+        await cloudinary.uploader.destroy(videoPublicId, { resource_type: "video" });
+        await cloudinary.uploader.destroy(thumbnailPublicId, { resource_type: "image" });
+
+        await Video.findByIdAndDelete(id);
         return res.status(200).json({message: 'Video Deleted Successfully'});
     }
     catch(error){

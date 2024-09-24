@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Loader2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom'
@@ -9,6 +10,7 @@ const MyVideos = () => {
     const [videos, setVideos] = useState([]);
     const [isVideo, setIsVideo] = useState(true);
     const [loading, setLoading] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
 
     const navigate = useNavigate();
 
@@ -47,6 +49,7 @@ const MyVideos = () => {
     }
 
     const handleDeleteVideo = async (id) => {
+        setIsDeleting(true);
         const res = await fetch(`http://localhost:3000/api/video/deletevideo/${id}`, {
             method: 'DELETE',
             credentials: 'include'
@@ -61,6 +64,7 @@ const MyVideos = () => {
         else{
             toast.error(data.error);
         }
+        setIsDeleting(false);
     }
 
   return (
@@ -89,9 +93,15 @@ const MyVideos = () => {
                           </h1>
                           <p>Views: {video.views}</p>
                           <p>{video.username}</p>
-                          <Button variant='destructive' onClick={() => handleDeleteVideo(video._id)}>
-                            Delete
-                        </Button>
+                          {isDeleting ? 
+                            <Button disabled>
+                                <Loader2 className='animate-spin' />
+                            </Button>
+                            :
+                            <Button variant='destructive' onClick={() => handleDeleteVideo(video._id)}>
+                                Delete
+                            </Button>
+                          }
                         </div>
                       ))
                 }
