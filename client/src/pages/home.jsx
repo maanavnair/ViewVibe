@@ -13,7 +13,7 @@ const Home = () => {
   const fetchVideos = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3000/api/video?page=${page}&limit=2`, {
+      const res = await fetch(`http://localhost:3000/api/video?page=${page}&limit=12`, {
         method: 'GET',
         credentials: 'include',
       });
@@ -67,13 +67,15 @@ const Home = () => {
   return (
     <div className='px-5'>
       {videos.length > 0 ? (
-        videos.map((video) => (
+        <div className='grid grid-cols-4 gap-6'>
+        {videos.map((video) => (
             <VideoCard 
               video={video}
               handleVideoClick={handleVideoClick}
               key={video._id}
             />
-        ))
+        ))}
+        </div>
       ) : (
         <p>No videos found.</p>
       )}
