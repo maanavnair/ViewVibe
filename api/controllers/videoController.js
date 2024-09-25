@@ -100,4 +100,34 @@ const deleteVideo = async(req, res) => {
     }
 }
 
-export { getAllVideos, getVideo, incViews, userVideos, deleteVideo };
+const toggleLike = async (req, res) => {
+    const videoId = req.params.id;
+    const { userId } = req.body;
+
+    try{
+        const video = await Video.findById(videoId);
+
+        if(!video){
+            return res.status(400).json({error: 'Video not found'});
+        }
+
+        const hasLiked = video.likes.includes(userId);
+        if(hasLiked){
+            video.likes = video.likes.filter((id) => id.toString() !== userId);
+            video.likeCount -= 1;
+        }
+        else{
+            video.likes.push(userId);
+            video.likeCount += 1;
+        }
+
+        await video.save();
+        return res.status(200).json({video: video, liked: !hasLiked});
+    }
+    catch(error){
+        console.error("Error toggling likes: ", error);
+        return res.status(500).json({error: 'Internal Server Error'});
+    }
+}
+
+export { getAllVideos, getVideo, incViews, userVideos, deleteVideo, toggleLike };

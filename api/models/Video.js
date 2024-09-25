@@ -29,6 +29,15 @@ const videoSchema = mongoose.Schema({
     thumbnailLink:{
         type: String,
         required: true
+    },
+    likes: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'User',
+        default: []
+    },
+    likeCount: {
+        type: Number,
+        default: 0
     }
 }, {timestamps: true});
 
