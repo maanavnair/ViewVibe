@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button';
+import VideoCard from '@/components/videoCard';
 import { Loader2 } from 'lucide-react';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom';
 
 const MyVideos = () => {
-
     const { id } = useParams();
     const [videos, setVideos] = useState([]);
     const [isVideo, setIsVideo] = useState(true);
@@ -16,99 +16,84 @@ const MyVideos = () => {
 
     const fetchVideos = async () => {
         setLoading(true);
-        try{
+        try {
             const res = await fetch(`http://localhost:3000/api/video/uservideos/${id}`, {
                 method: 'GET',
-                credentials: 'include'
+                credentials: 'include',
             });
             const data = await res.json();
-            if(data.error === 'No Videos Found'){
+            if (data.error === 'No Videos Found') {
                 setIsVideo(false);
                 return;
             }
             setVideos(data.videos);
-        }
-        catch(error){
+        } catch (error) {
             console.error("Error while fetching videos: ", error);
-        }
-        finally{
+        } finally {
             setLoading(false);
         }
-    }
+    };
 
     useEffect(() => {
         fetchVideos();
-    }, [])
+    }, []);
 
     const handleVideoClick = async (id) => {
         await fetch(`http://localhost:3000/api/video/views/${id}`, {
-          method: 'POST',
-          credentials: 'include',
+            method: 'POST',
+            credentials: 'include',
         });
         navigate(`/video/${id}`);
-    }
+    };
 
     const handleDeleteVideo = async (id) => {
         setIsDeleting(true);
         const res = await fetch(`http://localhost:3000/api/video/deletevideo/${id}`, {
             method: 'DELETE',
-            credentials: 'include'
+            credentials: 'include',
         });
-        
+
         const data = await res.json();
 
-        if(data.message){
+        if (data.message) {
             toast.success(data.message);
             window.location.reload();
-        }
-        else{
+        } else {
             toast.error(data.error);
         }
         setIsDeleting(false);
-    }
+    };
 
-  return (
-    <div>
-        <h1 className='text-xl font-bold'>
-            Your Videos
-        </h1>
-        {!isVideo && 
-            <h1>No Videos Uploaded</h1>
-        }
-        {isVideo &&
-            <div>
-                {
-                    videos.map((video) => (
-                        <div key={video._id} className='mb-10'>
-                          <img 
-                            src={video.thumbnailLink} 
-                            className='rounded-md h-[44vh] w-[35vw] cursor-pointer'
-                            onClick={() => handleVideoClick(video._id)} 
-                          />
-                          <h1
-                            className='cursor-pointer'
-                            onClick={() => handleVideoClick(video._id)}
-                          >
-                            {video.title}
-                          </h1>
-                          <p>Views: {video.views}</p>
-                          <p>{video.username}</p>
-                          {isDeleting ? 
-                            <Button disabled>
-                                <Loader2 className='animate-spin' />
+    return (
+        <div className='p-5'>
+            <h1 className='text-2xl font-bold mb-4'>Your Videos</h1>
+            {!isVideo && 
+                <h2 className='text-lg'>No Videos Uploaded</h2>
+            }
+            {isVideo && (
+                <div className='flex flex-col space-y-4'>
+                    {videos.map((video) => (
+                        <div key={video._id} className='flex justify-between items-center border-b border-gray-200 pb-4'>
+                            <div className='flex items-center'>
+                                <VideoCard 
+                                    video={video}
+                                    handleVideoClick={handleVideoClick}
+                                />
+                            </div>
+                            <Button 
+                                variant='destructive' 
+                                onClick={() => handleDeleteVideo(video._id)}
+                                disabled={isDeleting}
+                            >
+                                DELETE
                             </Button>
-                            :
-                            <Button variant='destructive' onClick={() => handleDeleteVideo(video._id)}>
-                                Delete
-                            </Button>
-                          }
                         </div>
-                      ))
-                }
-            </div>
-        }
-    </div>
-  )
-}
+                    ))}
+                </div>
+            )}
+            {loading && <Loader2 className="animate-spin" />}
+        </div>
+    );
+};
 
-export default MyVideos
+export default MyVideos;
