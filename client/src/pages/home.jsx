@@ -1,3 +1,4 @@
+import VideoCard from '@/components/videoCard';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -67,21 +68,11 @@ const Home = () => {
     <div className='px-5'>
       {videos.length > 0 ? (
         videos.map((video) => (
-          <div key={video._id} className='mb-10'>
-            <img 
-              src={video.thumbnailLink} 
-              className='rounded-md h-[44vh] w-[35vw] cursor-pointer'
-              onClick={() => handleVideoClick(video._id)} 
+            <VideoCard 
+              video={video}
+              handleVideoClick={handleVideoClick}
+              key={video._id}
             />
-            <h1
-              className='cursor-pointer'
-              onClick={() => handleVideoClick(video._id)}
-            >
-              {video.title}
-            </h1>
-            <p>Views: {video.views}</p>
-            <p>{video.username}</p>
-          </div>
         ))
       ) : (
         <p>No videos found.</p>
