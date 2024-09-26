@@ -5,6 +5,6 @@ const router = express.Router();
 
 router
     .post('/:id', postComment)
-    .delete(':/id', deleteComment)
+    .delete('/:id', deleteComment)
 
 export {router};

@@ -115,6 +115,8 @@ const Video = () => {
         }
     }
 
+    console.log(comments);
+
     return (
         <div className="container mx-auto my-8 px-4 flex flex-col">
             {loading ? (
