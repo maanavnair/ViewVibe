@@ -95,6 +95,26 @@ const Video = () => {
         }
     }
 
+    const handleCommentDelete = async (commentId) => {
+        try{
+            const res = await fetch(`http://localhost:3000/api/comment/${commentId}`, {
+                method: 'DELETE',
+                credentials: 'include'
+            });
+            const data = await res.json();
+            if(data.message){
+                toast.success(data.message);
+                window.location.reload();
+            }
+            else{
+                toast.error(data.error);
+            }
+        }
+        catch(error){
+            console.error("Error deleting comment: ", error);
+        }
+    }
+
     return (
         <div className="container mx-auto my-8 px-4 flex flex-col">
             {loading ? (
@@ -157,9 +177,12 @@ const Video = () => {
                                             <p className="font-medium text-gray-700">{comment.username}</p>
                                             <p className="text-gray-600">{comment.content}</p>
                                         </span>
-                                        <button>
-                                            <MdDelete className='w-6 h-7' />
-                                        </button>
+                                        {
+                                            user._id === comment.userId &&
+                                            <button onClick={() => handleCommentDelete(comment._id)}>
+                                                <MdDelete className='w-6 h-6' />
+                                            </button>
+                                        }
                                     </li>
                                 ))}
                             </ul>
