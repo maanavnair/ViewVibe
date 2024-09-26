@@ -1,3 +1,4 @@
+import { Comment } from "../models/Comment.js";
 import { Video } from "../models/Video.js";
 import { cloudinary } from "../utils/cloudinary.js";
 
@@ -33,7 +34,8 @@ const getVideo = async (req, res) => {
         if(!video){
             return res.status(400).json({error: 'No Video Found'});
         }
-        return res.status(200).json({video});
+        const comments = await Comment.find({videoId: id}).sort({createdAt: -1});
+        return res.status(200).json({video, comments});
     }
     catch(error){
         console.log('Error while fetching video: ', error);

@@ -5,6 +5,7 @@ import cors from 'cors';
 import {router as authRoutes} from './routes/authRoutes.js';
 import { router as uploadRoutes } from './routes/uploadRoutes.js'
 import { router as videoRoutes } from './routes/videoRoutes.js'
+import { router as commentRoutes } from './routes/commentRoutes.js'
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(cors({credentials: true, origin: "http://localhost:5173"}));
 app.use('/api/auth', authRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/video', videoRoutes);
+app.use('/api/comment', commentRoutes);
 
 //testing api
 app.get('/', (req, res) => {
