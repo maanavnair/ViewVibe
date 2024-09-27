@@ -10,22 +10,28 @@ import Navbar from './components/navbar'
 import Upload from './pages/upload'
 import Video from './pages/video'
 import MyVideos from './pages/myvideos'
+import Sidebar from './components/sidebar'
 
 const App = () => {
 
   const {user} = useContext(UserContext);
 
   return (
-    <div className='bg-gray-900 text-white'>
+    <div className='bg-black text-white'>
       {user ? <Navbar /> : ""}
-      <Routes>
-        <Route path='/login' element={user ? <Navigate to='/' /> : <Login /> } />
-        <Route path='/signup' element={user ? <Navigate to='/' /> : <Signup />} />
-        <Route path='/' element={user ? <Home /> : <Navigate to='/login' />} />
-        <Route path='/upload' element={user ? <Upload /> : <Navigate to='/login' />} />
-        <Route path='/video/:id' element={user ? <Video /> : <Navigate to='/login' />} />
-        <Route path='/myvideos/:id' element={user ? <MyVideos /> : <Navigate to='/login' />} />
-      </Routes>
+      <div className='flex'>
+      {user ? <Sidebar /> : ""}
+        <div className='w-full'>
+        <Routes>
+          <Route path='/login' element={user ? <Navigate to='/' /> : <Login /> } />
+          <Route path='/signup' element={user ? <Navigate to='/' /> : <Signup />} />
+          <Route path='/' element={user ? <Home /> : <Navigate to='/login' />} />
+          <Route path='/upload' element={user ? <Upload /> : <Navigate to='/login' />} />
+          <Route path='/video/:id' element={user ? <Video /> : <Navigate to='/login' />} />
+          <Route path='/myvideos/:id' element={user ? <MyVideos /> : <Navigate to='/login' />} />
+        </Routes>
+        </div>
+      </div>
       <Toaster />
     </div>
   )

@@ -65,15 +65,15 @@ const MyVideos = () => {
     };
 
     return (
-        <div className='p-5'>
+        <div className='p-5 min-h-screen w-full'>
             <h1 className='text-2xl font-bold mb-4'>Your Videos</h1>
             {!isVideo && 
                 <h2 className='text-lg'>No Videos Uploaded</h2>
             }
             {isVideo && (
-                <div className='flex flex-col space-y-4'>
+                <div className='flex flex-col space-y-4 w-full'>
                     {videos.map((video) => (
-                        <div key={video._id} className='flex justify-between items-center border-b border-gray-200 pb-4'>
+                        <div key={video._id} className='flex justify-between items-center pb-4 w-full'>
                             <div className='flex items-center'>
                                 <VideoCard 
                                     video={video}
@@ -84,6 +84,7 @@ const MyVideos = () => {
                                 variant='destructive' 
                                 onClick={() => handleDeleteVideo(video._id)}
                                 disabled={isDeleting}
+                                className='mr-10'
                             >
                                 DELETE
                             </Button>

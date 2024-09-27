@@ -42,44 +42,44 @@ const Login = () => {
   return (
     <div className='flex'>
         <form onSubmit={handleSubmit} 
-            className='flex py-5 flex-col w-1/2 justify-center items-center'
+            className='flex py-5 flex-col w-[50vw] justify-center items-center'
         >
             <h1 className='text-2xl font-bold text-center font-sans mb-10'>
                 ViewVibe
             </h1>
             <span className='flex flex-col'>
-                <label htmlFor='email' className='mb-1 text-orange-700'>Email</label>
+                <label htmlFor='email' className='mb-1'>Email</label>
                 <Input
                     name='email' 
                     type='text'
                     placeholder='Email'
-                    className='w-[30vw] border-2 mb-10'
+                    className='w-[30vw] border-2 mb-10 text-black'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </span>
             <span className='flex flex-col'>
-                <label htmlFor='password' className='mb-1 text-orange-700'>Password</label>
+                <label htmlFor='password' className='mb-1'>Password</label>
                 <Input
                     name='password'
                     type='password'
                     placeholder='Password'
-                    className='w-[30vw] border-2 mb-10'
+                    className='w-[30vw] border-2 mb-10 text-black'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} 
                 />
             </span>
-            <Button className='w-[30vw]'>
-                Login
+            <Button className='w-[30vw] bg-blue-500 hover:bg-blue-600'>
+                LOGIN
             </Button>
             <span className='mt-2'>
                 Are you new?{" "}
-                <Link to='/signup' className='text-blue-600 hover:underline'>
+                <Link to='/signup' className='text-blue-500 hover:underline'>
                     Create an account
                 </Link>
             </span>
         </form>
-        <div className='w-1/2 min-h-screen bg-orange-100 flex justify-center items-center'>
+        <div className='w-[50vw] min-h-screen bg-orange-100 flex justify-center items-center'>
             <img src={loginImage} />
         </div>
     </div>

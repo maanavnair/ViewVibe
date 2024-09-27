@@ -53,76 +53,76 @@ const Signup = () => {
 
   return (
     <div className='flex'>
-      <div className='w-1/2 min-h-screen flex items-center justify-center bg-orange-100'>
+      <div className='w-[50vw] min-h-screen flex items-center justify-center bg-orange-100'>
         <img src={signupImage} />
       </div>
       <form onSubmit={handleSubmit} 
-            className='flex py-5 flex-col w-1/2 justify-center items-center'
+            className='flex py-5 flex-col w-[50vw] justify-center items-center'
         >
             <h1 className='text-2xl font-bold text-center font-sans mb-5'>
                 ViewVibe
             </h1>
             <span className='flex flex-col'>
-              <label htmlFor='name' className='mb-1 text-orange-700'>Name</label>
+              <label htmlFor='name' className='mb-1'>Name</label>
               <Input
                   name='name' 
                   type='text'
                   placeholder='Name'
-                  className='mb-5 py-2 px-3 w-[30vw] border-2'
+                  className='mb-5 py-2 px-3 w-[30vw] border-2 text-black'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
               />
             </span>
             <span className='flex flex-col'>
-              <label htmlFor='username' className='mb-1 text-orange-700'>Username</label>
+              <label htmlFor='username' className='mb-1'>Username</label>
               <Input
                   name='username' 
                   type='text'
                   placeholder='Username'
-                  className='mb-5 py-2 px-3 w-[30vw] border-2'
+                  className='mb-5 py-2 px-3 w-[30vw] border-2 text-black'
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
             </span>
             <span className='flex flex-col'>
-                <label htmlFor='email' className='mb-1 text-orange-700'>Email</label>
+                <label htmlFor='email' className='mb-1'>Email</label>
                 <Input
                     name='email' 
                     type='text'
                     placeholder='Email'
-                    className='mb-5 py-2 px-3 w-[30vw] border-2'
+                    className='mb-5 py-2 px-3 w-[30vw] border-2 text-black'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </span>
             <span className='flex flex-col'>
-                <label htmlFor='password' className='mb-1 text-orange-700'>Password</label>
+                <label htmlFor='password' className='mb-1'>Password</label>
                 <Input
                     name='password'
                     type='password'
                     placeholder='Password'
-                    className='mb-5 py-2 px-3 w-[30vw] border-2'
+                    className='mb-5 py-2 px-3 w-[30vw] border-2 text-black'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} 
                 />
             </span>
             <span className='flex flex-col'>
-                <label htmlFor='confirm' className='mb-1 text-orange-700'>Confirm Password</label>
+                <label htmlFor='confirm' className='mb-1'>Confirm Password</label>
                 <Input
                     name='confirm' 
                     type='password'
                     placeholder='Confirm Password'
-                    className='mb-5 py-2 px-3 w-[30vw] border-2'
+                    className='mb-5 py-2 px-3 w-[30vw] border-2 text-black'
                     value={confirm}
                     onChange={(e) => setConfirm(e.target.value)}
                 />
             </span>
-            <Button className='w-[30vw]'>
-              Signup
+            <Button className='w-[30vw] bg-blue-500 hover:bg-blue-600'>
+              SIGNUP
             </Button>
             <span className='mt-2'>
                 Already have an account?{" "}
-                <Link to='/login' className='text-blue-600 hover:underline'>
+                <Link to='/login' className='text-blue-500 hover:underline'>
                     Login
                 </Link>
             </span>

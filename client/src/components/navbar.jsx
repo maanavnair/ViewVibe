@@ -54,51 +54,7 @@ const Navbar = () => {
     <>
     <nav className='flex items-center w-[100vw] px-2 py-4'>
         <span className='flex items-center'>
-            <Sheet>
-                <SheetTrigger asChild>
-                    <button className='flex items-center justify-center ml-2 px-2'>
-                        <CiMenuBurger className='w-6 h-6' />
-                    </button>
-                </SheetTrigger>
-                <SheetContent side="left">
-                    <SheetHeader>
-                        <SheetTitle className='text-center text-2xl font-bold'>
-                            ViewVibe
-                        </SheetTitle>
-                        <Separator />
-                    </SheetHeader>
-                    <span className='flex flex-col mt-5'>
-                        <Button variant='outline'
-                            className='w-full border-none mb-2'
-                            onClick = {() => (navigate('/'))}
-                        >
-                            Home
-                        </Button>
-                        <Separator className='mb-5' />
-                        <h1 className='text-center font-bold mb-1'>
-                            {user.name}
-                        </h1>
-                        <Button variant='outline'
-                            className='w-full border-none mb-2'
-                            onClick={() => navigate(`/myvideos/${user._id}`)}
-                        >
-                            My Videos
-                        </Button>
-                        <Button variant='outline' 
-                            className='w-full border-none mb-2'
-                            onClick={handleUpload}
-                        >
-                            Upload
-                        </Button>
-                        <Button variant='outline'
-                            className='w-full border-none mb-2'
-                            onClick={handleLogout}
-                        >
-                            Logout
-                        </Button>
-                    </span>
-                </SheetContent>
-            </Sheet>
+            
             <p className='ml-5 cursor-pointer' onClick={() => navigate('/')}>
                 ViewVibe
             </p>

@@ -80,7 +80,7 @@ const Upload = () => {
     }
 
   return (
-    <div className='py-5'>
+    <div className='py-5 min-h-screen'>
         <h1 className='text-2xl text-center font-bold mb-10'>
             Upload
         </h1>
@@ -137,7 +137,7 @@ const Upload = () => {
             </Button>
             }
             {loading && 
-                <Button disabled className='w-[80vw]'>
+                <Button disabled className='w-[80vw] bg-blue-500 hover:bg-blue-600 text-white'>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 </Button>
             }
