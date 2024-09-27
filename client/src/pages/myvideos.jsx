@@ -72,7 +72,7 @@ const MyVideos = () => {
 
     return (
         <div className='p-5 min-h-screen w-full'>
-            <h1 className='text-2xl font-bold mb-4'>Your Videos</h1>
+            <h1 className='text-2xl font-bold mb-10 text-center'>Your Videos</h1>
             {!isVideo && 
                 <h2 className='text-lg'>No Videos Uploaded</h2>
             }

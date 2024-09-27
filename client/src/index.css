@@ -73,5 +73,6 @@
     }
     body {
       @apply bg-gray-900 text-foreground;
+      overflow-x: hidden;
     }
   }
