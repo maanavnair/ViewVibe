@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator"
 import { RxHamburgerMenu } from "react-icons/rx";
+import { CiMenuBurger } from "react-icons/ci";
 import {
     Sheet,
     SheetClose,
@@ -55,9 +56,9 @@ const Navbar = () => {
         <span className='flex items-center'>
             <Sheet>
                 <SheetTrigger asChild>
-                    <Button variant='outline' className='flex items-center justify-center ml-2'>
-                        <RxHamburgerMenu />
-                    </Button>
+                    <button className='flex items-center justify-center ml-2 px-2'>
+                        <CiMenuBurger className='w-6 h-6' />
+                    </button>
                 </SheetTrigger>
                 <SheetContent side="left">
                     <SheetHeader>
@@ -103,15 +104,14 @@ const Navbar = () => {
             </p>
         </span>
         <span className='relative ml-[20vw]'>
-            <FaSearch className='absolute left-8 top-3' />
+            <FaSearch className='absolute left-8 top-3 text-gray-900' />
             <Input 
                 placeholder='Search...'
                 type='text'
-                className='py-1 px-10 w-[30vw] border-2 rounded-full mx-5 '
+                className='py-1 px-10 w-[30vw] border-2 rounded-full mx-5 text-black'
             />
         </span>
     </nav>
-    <Separator className='mb-2 shadow-xl' />
     </>
   )
 }

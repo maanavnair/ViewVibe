@@ -16,7 +16,7 @@ const App = () => {
   const {user} = useContext(UserContext);
 
   return (
-    <>
+    <div className='bg-gray-900 text-white'>
       {user ? <Navbar /> : ""}
       <Routes>
         <Route path='/login' element={user ? <Navigate to='/' /> : <Login /> } />
@@ -27,7 +27,7 @@ const App = () => {
         <Route path='/myvideos/:id' element={user ? <MyVideos /> : <Navigate to='/login' />} />
       </Routes>
       <Toaster />
-    </>
+    </div>
   )
 }
 

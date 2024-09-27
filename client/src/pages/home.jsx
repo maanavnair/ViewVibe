@@ -65,7 +65,7 @@ const Home = () => {
   }
 
   return (
-    <div className='px-5'>
+    <div className='px-5 min-h-screen mt-5'>
       {videos.length > 0 ? (
         <div className='grid grid-cols-4 gap-6'>
         {videos.map((video) => (
