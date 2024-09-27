@@ -1,5 +1,6 @@
 import { Comment } from "../models/Comment.js";
 import { Video } from "../models/Video.js";
+import { User } from "../models/User.js"
 import { cloudinary } from "../utils/cloudinary.js";
 
 
@@ -65,12 +66,13 @@ const userVideos = async (req, res) => {
     const id = req.params.id;
     try{
         const videos = await Video.find({userId: id}).sort({createdAt: -1});
+        const user = await User.findById(id);
 
         if(!videos || videos.length === 0){
             return res.status(400).json({error: "No Videos Found"});
         }
 
-        return res.status(200).json({videos});
+        return res.status(200).json({videos, user});
     }
     catch(error){
         console.error("Error fetching user videos: ", error);

@@ -56,14 +56,6 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [loading, isVideos]);
 
-  const handleVideoClick = async (id) => {
-    await fetch(`http://localhost:3000/api/video/views/${id}`, {
-      method: 'POST',
-      credentials: 'include',
-    });
-    navigate(`/video/${id}`);
-  }
-
   return (
     <div className='min-h-screen mt-5'>
       {videos.length > 0 ? (
@@ -71,7 +63,6 @@ const Home = () => {
         {videos.map((video) => (
             <VideoCard 
               video={video}
-              handleVideoClick={handleVideoClick}
               key={video._id}
             />
         ))}

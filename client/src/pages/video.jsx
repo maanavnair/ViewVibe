@@ -181,8 +181,11 @@ const Video = () => {
                                         </span>
                                         {
                                             user._id === comment.userId &&
-                                            <button onClick={() => handleCommentDelete(comment._id)}>
-                                                <MdDelete className='w-6 h-6' />
+                                            <button 
+                                                className='bg-red-600 p-2 rounded-md'
+                                                onClick={() => handleCommentDelete(comment._id)}
+                                            >
+                                                <MdDelete className='w-6 h-6 text-white' />
                                             </button>
                                         }
                                     </li>

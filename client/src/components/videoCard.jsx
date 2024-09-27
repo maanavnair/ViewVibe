@@ -1,10 +1,34 @@
-import React from 'react'
+import { UserContext } from '@/context/userContext';
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const VideoCard = ({ video, handleVideoClick }) => {
+const VideoCard = ({ video }) => {
+
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleClickChannel = async () => {
+    if(video.userId === user._id){
+      navigate(`/myvideos/${user._id}`);
+    }
+    else{
+      navigate(`/channel/${video.userId}`);
+    }
+  }
+
+  const handleVideoClick = async (id) => {
+    await fetch(`http://localhost:3000/api/video/views/${id}`, {
+      method: 'POST',
+      credentials: 'include',
+    });
+    navigate(`/video/${id}`);
+  }
+
   return (
-    <div className="w-full max-w-sm mx-auto cursor-pointer" onClick={() => handleVideoClick(video._id)}>
+    <div className="w-full max-w-sm mx-auto cursor-pointer">
   <div className="relative">
     <img 
+      onClick={() => handleVideoClick(video._id)}
       src={video.thumbnailLink} 
       alt={video.title} 
       className="w-full h-[180px] object-cover rounded-lg shadow-md hover:brightness-90 transition duration-300 ease-in-out"
@@ -24,7 +48,7 @@ const VideoCard = ({ video, handleVideoClick }) => {
         {video.title}
       </h1>
       <p className="text-sm text-gray-500">
-        {video.username} • {video.views} views
+        <span className='hover:underline' onClick={handleClickChannel}>{video.username}</span> • {video.views} views
       </p>
     </div>
   </div>

@@ -28,7 +28,7 @@ const Sidebar = () => {
     }
 
   return (
-    <div className='w-[15vw] flex flex-col items-center gap-5 py-5'>
+    <div className='w-[15vw] min-h-screen flex flex-col items-center gap-5 py-5'>
         <span 
             className='hover:bg-gray-900 w-full text-center py-2 cursor-pointer' 
             onClick={() => navigate('/')}

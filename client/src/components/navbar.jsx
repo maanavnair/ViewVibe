@@ -55,16 +55,16 @@ const Navbar = () => {
     <nav className='flex items-center w-[100vw] px-2 py-4'>
         <span className='flex items-center'>
             
-            <p className='ml-5 cursor-pointer' onClick={() => navigate('/')}>
+            <p className='ml-5 text-xl font-semibold cursor-pointer' onClick={() => navigate('/')}>
                 ViewVibe
             </p>
         </span>
         <span className='relative ml-[20vw]'>
-            <FaSearch className='absolute left-8 top-3 text-gray-900' />
+            <FaSearch className='absolute left-8 top-3 text-white' />
             <Input 
                 placeholder='Search...'
                 type='text'
-                className='py-1 px-10 w-[30vw] border-2 rounded-full mx-5 text-black'
+                className='py-1 px-10 w-[30vw] border-2 rounded-md mx-5 bg-black'
             />
         </span>
     </nav>

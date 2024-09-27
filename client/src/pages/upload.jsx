@@ -95,7 +95,7 @@ const Upload = () => {
                     placeholder='Video Title...'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className='w-[80vw] border-2 px-2 py-2 mb-5'
+                    className='w-[80vw] border-2 px-2 py-2 mb-5 bg-black'
                 />
             </span>
             <span className='flex flex-col'>
@@ -105,7 +105,7 @@ const Upload = () => {
                     placeholder='Video Description...'
                     value={desc}
                     onChange={(e) => setDesc(e.target.value)}
-                    className='w-[80vw] border-2 px-2 py-2 mb-5'
+                    className='w-[80vw] border-2 px-2 py-2 mb-5 bg-black'
                 />
             </span>
             <span className='flex flex-col'>
@@ -115,7 +115,7 @@ const Upload = () => {
                 type="file"
                 accept="video/*"
                 onChange={(e) => handleFileChange(e, 'video')}
-                className='w-[80vw] border-2 px-2 py-2 mb-5'
+                className='w-[80vw] border-2 px-2 py-2 mb-5 bg-black'
                 />
             </span>
             <span className='flex flex-col'>
@@ -125,11 +125,11 @@ const Upload = () => {
                 type="file"
                 accept="image/*"
                 onChange={(e) => handleFileChange(e, 'thumbnail')}
-                className='w-[80vw] border-2 px-2 py-2 mb-5'
+                className='w-[80vw] border-2 px-2 py-2 mb-5 bg-black'
                 />
             </span>
             {!loading && 
-            <Button className='w-[80vw]'>
+            <Button className='w-[80vw] bg-blue-500 hover:bg-blue-600'>
                 <span className='flex items-center text-xl'>
                     Upload
                     <MdFileUpload className='ml-1' />

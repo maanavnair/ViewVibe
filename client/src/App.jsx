@@ -11,6 +11,7 @@ import Upload from './pages/upload'
 import Video from './pages/video'
 import MyVideos from './pages/myvideos'
 import Sidebar from './components/sidebar'
+import Channel from './pages/channel'
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
           <Route path='/upload' element={user ? <Upload /> : <Navigate to='/login' />} />
           <Route path='/video/:id' element={user ? <Video /> : <Navigate to='/login' />} />
           <Route path='/myvideos/:id' element={user ? <MyVideos /> : <Navigate to='/login' />} />
+          <Route path='/channel/:id' element={user ? <Channel /> : <Navigate to='/login' />} />
         </Routes>
         </div>
       </div>
