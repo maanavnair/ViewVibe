@@ -3,7 +3,20 @@ import VideoCard from '@/components/videoCard';
 import { Loader2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { MdDelete } from "react-icons/md";
 import { useNavigate, useParams } from 'react-router-dom';
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+  } from "@/components/ui/alert-dialog"
+  
 
 const MyVideos = () => {
     const { id } = useParams();
@@ -38,13 +51,6 @@ const MyVideos = () => {
         fetchVideos();
     }, []);
 
-    const handleVideoClick = async (id) => {
-        await fetch(`http://localhost:3000/api/video/views/${id}`, {
-            method: 'POST',
-            credentials: 'include',
-        });
-        navigate(`/video/${id}`);
-    };
 
     const handleDeleteVideo = async (id) => {
         setIsDeleting(true);
@@ -71,23 +77,58 @@ const MyVideos = () => {
                 <h2 className='text-lg'>No Videos Uploaded</h2>
             }
             {isVideo && (
-                <div className='flex flex-col space-y-4 w-full'>
+                <div className='grid grid-cols-4 gap-6'>
                     {videos.map((video) => (
                         <div key={video._id} className='flex justify-between items-center pb-4 w-full'>
-                            <div className='flex items-center'>
+                            <div className='relative flex items-center'>
                                 <VideoCard 
                                     video={video}
-                                    handleVideoClick={handleVideoClick}
+                                    isVideoOwner= {true}
                                 />
+                                <AlertDialog>
+                                    <AlertDialogTrigger asChild>
+                                        <button 
+                                            className='absolute p-2 bg-red-600 hover:bg-red-700 rounded-md right-2 top-2'
+                                            disabled={isDeleting}
+                                        >
+                                            <MdDelete />
+                                        </button>
+                                    </AlertDialogTrigger>
+                                    <AlertDialogContent className='bg-black'>
+                                        <AlertDialogHeader>
+                                            <AlertDialogTitle className='text-white'>
+                                                Are you absolutely sure?
+                                            </AlertDialogTitle>
+                                            <AlertDialogDescription className='text-white'>
+                                                This action cannot be undone. This will permanently delete your 
+                                                video and remove it's data from our servers.
+                                            </AlertDialogDescription>
+                                        </AlertDialogHeader>
+                                        <AlertDialogFooter>
+                                            <AlertDialogCancel
+                                                disabled={isDeleting}
+                                            >
+                                                Cancel
+                                            </AlertDialogCancel>
+                                            <AlertDialogAction
+                                                className='bg-red-600 hover:bg-red-700'
+                                                onClick={() => handleDeleteVideo(video._id)}
+                                                disabled={isDeleting}
+                                            >
+                                                Continue
+                                            </AlertDialogAction>
+                                        </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                </AlertDialog>
                             </div>
-                            <Button 
+                            {/* <Button 
                                 variant='destructive' 
                                 onClick={() => handleDeleteVideo(video._id)}
                                 disabled={isDeleting}
                                 className='mr-10'
                             >
                                 DELETE
-                            </Button>
+                            </Button> */}
                         </div>
                     ))}
                 </div>

@@ -37,14 +37,6 @@ const Channel = () => {
         fetchVideos();
     }, []);
 
-    const handleVideoClick = async (id) => {
-        await fetch(`http://localhost:3000/api/video/views/${id}`, {
-            method: 'POST',
-            credentials: 'include',
-        });
-        navigate(`/video/${id}`);
-    };
-
   return (
     <div className='min-h-screen mt-5'>
         <h1 className='text-xl font-bold text-center mb-10'>
@@ -55,7 +47,6 @@ const Channel = () => {
         {videos.map((video) => (
             <VideoCard 
               video={video}
-              handleVideoClick={handleVideoClick}
               key={video._id}
             />
         ))}
