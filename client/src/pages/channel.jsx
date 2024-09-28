@@ -43,7 +43,7 @@ const Channel = () => {
             {channel?.username}
         </h1>
         {videos.length > 0 ? (
-        <div className='grid grid-cols-4 gap-6'>
+        <div className='grid grid-cols-4 gap-6 px-5'>
         {videos.map((video) => (
             <VideoCard 
               video={video}

@@ -77,7 +77,7 @@ const MyVideos = () => {
                 <h2 className='text-lg'>No Videos Uploaded</h2>
             }
             {isVideo && (
-                <div className='grid grid-cols-4 gap-6'>
+                <div className='grid grid-cols-4 gap-6 px-5'>
                     {videos.map((video) => (
                         <div key={video._id} className='flex justify-between items-center pb-4 w-full'>
                             <div className='relative flex items-center'>
@@ -121,14 +121,6 @@ const MyVideos = () => {
                                     </AlertDialogContent>
                                 </AlertDialog>
                             </div>
-                            {/* <Button 
-                                variant='destructive' 
-                                onClick={() => handleDeleteVideo(video._id)}
-                                disabled={isDeleting}
-                                className='mr-10'
-                            >
-                                DELETE
-                            </Button> */}
                         </div>
                     ))}
                 </div>

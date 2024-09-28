@@ -28,27 +28,27 @@ const Sidebar = () => {
     }
 
   return (
-    <div className='w-[15vw] min-h-screen flex flex-col items-center gap-5 py-5'>
+    <div className='w-[15vw] min-h-screen flex flex-col items-center py-5 bg-gray-800'>
         <span 
-            className='hover:bg-gray-900 w-full text-center py-2 cursor-pointer' 
+            className='hover:bg-gray-900 w-full text-center py-5 cursor-pointer' 
             onClick={() => navigate('/')}
         >
             <h1>Home</h1>
         </span>
         <span 
-            className='hover:bg-gray-900 w-full text-center py-2 cursor-pointer'
+            className='hover:bg-gray-900 w-full text-center py-5 cursor-pointer'
             onClick={() => navigate(`/myvideos/${user._id}`)}
         >
             <h1>My Videos</h1>
         </span>
         <span 
-            className='hover:bg-gray-900 w-full text-center py-2 cursor-pointer' 
+            className='hover:bg-gray-900 w-full text-center py-5 cursor-pointer' 
             onClick={() => navigate('/upload')}
         >
             <h1>Upload</h1>
         </span>
         <span 
-            className='hover:bg-gray-900 w-full text-center py-2 cursor-pointer' 
+            className='hover:bg-gray-900 w-full text-center py-5 cursor-pointer' 
             onClick={handleLogout}
         >
             <h1>Logout</h1>

@@ -52,7 +52,7 @@ const Navbar = () => {
 
   return (
     <>
-    <nav className='flex items-center w-[100vw] px-2 py-4'>
+    <nav className='flex items-center w-[100vw] px-2 py-4 bg-gray-800'>
         <span className='flex items-center'>
             
             <p className='ml-5 text-xl font-semibold cursor-pointer' onClick={() => navigate('/')}>

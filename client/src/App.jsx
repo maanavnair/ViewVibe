@@ -18,7 +18,7 @@ const App = () => {
   const {user} = useContext(UserContext);
 
   return (
-    <div className='bg-black text-white'>
+    <div className='bg-black text-white min-h-screen'>
       {user ? <Navbar /> : ""}
       <div className='flex'>
       {user ? <Sidebar /> : ""}
