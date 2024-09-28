@@ -42,6 +42,7 @@ const MyVideos = () => {
             setVideos(data.videos);
         } catch (error) {
             console.error("Error while fetching videos: ", error);
+            toast.error(error.message);
         } finally {
             setLoading(false);
         }
@@ -74,11 +75,11 @@ const MyVideos = () => {
         <div className='p-5 min-h-screen w-full'>
             <h1 className='text-2xl font-bold mb-10 text-center'>Your Videos</h1>
             {!isVideo && 
-                <h2 className='text-lg'>No Videos Uploaded</h2>
+                <h2 className='text-lg text-center'>No Videos Uploaded</h2>
             }
             {isVideo && (
                 <div className='grid grid-cols-4 gap-6 px-5'>
-                    {videos.map((video) => (
+                    {videos?.length > 0 && videos.map((video) => (
                         <div key={video._id} className='flex justify-between items-center pb-4 w-full'>
                             <div className='relative flex items-center'>
                                 <VideoCard 

@@ -1,6 +1,7 @@
 import VideoCard from '@/components/videoCard';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
@@ -34,6 +35,7 @@ const Home = () => {
       setPage((prev) => prev + 1);
     } catch (error) {
       console.error('Error fetching videos:', error);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }

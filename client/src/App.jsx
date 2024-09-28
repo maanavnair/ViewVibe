@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './index.css'
 import Login from './pages/login'
 import Signup from './pages/signup'
-import { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { UserContext } from './context/userContext'
 import Home from './pages/home'
@@ -15,7 +15,42 @@ import Channel from './pages/channel'
 
 const App = () => {
 
-  const {user} = useContext(UserContext);
+  const {user, setUser} = useContext(UserContext);
+
+  const fetchUser = async () => {
+    try {
+        const res = await fetch('http://localhost:3000/api/auth/user', {
+            method: 'GET',
+            credentials: 'include',
+        });
+        console.log('Response:', res);
+
+        if (res.ok) {
+            const data = await res.json();
+            console.log('Fetched user data:', data);
+            if (data.userProfile) {
+                setUser(data.userProfile);
+            } else {
+                console.log('No userProfile in response.');
+                setUser(null);
+            }
+        } else {
+            console.log('Response not ok:', res);
+            setUser(null);
+        }
+    } catch (error) {
+        console.log('Error fetching user details: ', error);
+    }
+}
+
+
+
+  useEffect(() => {
+    if(!user){
+      fetchUser();
+    }
+  }, []);
+
 
   return (
     <div className='bg-black text-white min-h-screen'>

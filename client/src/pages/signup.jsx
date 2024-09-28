@@ -43,7 +43,7 @@ const Signup = () => {
         throw new Error(data.error);
       }
       await setUser(data);
-      localStorage.setItem('user', JSON.stringify(data));
+      //localStorage.setItem('user', JSON.stringify(data));
       navigate('/');
     }
     catch(error){
@@ -68,7 +68,7 @@ const Signup = () => {
                   name='name' 
                   type='text'
                   placeholder='Name'
-                  className='mb-5 py-2 px-3 w-[30vw] border-2 text-black'
+                  className='mb-5 py-2 px-3 w-[30vw] border-2 bg-black'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
               />
@@ -79,7 +79,7 @@ const Signup = () => {
                   name='username' 
                   type='text'
                   placeholder='Username'
-                  className='mb-5 py-2 px-3 w-[30vw] border-2 text-black'
+                  className='mb-5 py-2 px-3 w-[30vw] border-2 bg-black'
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
@@ -90,7 +90,7 @@ const Signup = () => {
                     name='email' 
                     type='text'
                     placeholder='Email'
-                    className='mb-5 py-2 px-3 w-[30vw] border-2 text-black'
+                    className='mb-5 py-2 px-3 w-[30vw] border-2 bg-black'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
@@ -101,7 +101,7 @@ const Signup = () => {
                     name='password'
                     type='password'
                     placeholder='Password'
-                    className='mb-5 py-2 px-3 w-[30vw] border-2 text-black'
+                    className='mb-5 py-2 px-3 w-[30vw] border-2 bg-black'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} 
                 />
@@ -112,7 +112,7 @@ const Signup = () => {
                     name='confirm' 
                     type='password'
                     placeholder='Confirm Password'
-                    className='mb-5 py-2 px-3 w-[30vw] border-2 text-black'
+                    className='mb-5 py-2 px-3 w-[30vw] border-2 bg-black'
                     value={confirm}
                     onChange={(e) => setConfirm(e.target.value)}
                 />

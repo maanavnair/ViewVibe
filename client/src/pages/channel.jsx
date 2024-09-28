@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import VideoCard from '@/components/videoCard';
+import toast from 'react-hot-toast';
 
 const Channel = () => {
 
@@ -27,6 +28,7 @@ const Channel = () => {
         }
         catch(error){
             console.log("Error while fetching videos: ", error);
+            toast.error(error.message);
         }
         finally{
             setLoading(false);

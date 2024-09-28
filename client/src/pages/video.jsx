@@ -34,6 +34,7 @@ const Video = () => {
             setLiked(data.video.likes.includes(user._id));
         } catch (error) {
             console.error("Error fetching video details: ", error);
+            toast.error(error.message);
         } finally {
             setLoading(false);
         }
@@ -65,6 +66,7 @@ const Video = () => {
             setVideo(data.video);
         } catch (error) {
             console.error("Error liking video: ", error);
+            toast.error(error.message);
         }
     };
 
@@ -94,6 +96,7 @@ const Video = () => {
         }
         catch(error){
             console.error("Error posting comment: ", error);
+            toast.error(error.message);
         }
         finally{
             setDisableComment(false);
@@ -119,6 +122,7 @@ const Video = () => {
         }
         catch(error){
             console.error("Error deleting comment: ", error);
+            toast.error(error.message);
         }
     }
 

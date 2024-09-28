@@ -31,7 +31,8 @@ const Login = () => {
                 throw new Error(data.error);
             }
             await setUser(data);
-            localStorage.setItem('user', JSON.stringify(data));
+            console.log(data);
+            //localStorage.setItem('user', JSON.stringify(data));
             navigate('/');
         }
         catch(error){
@@ -53,7 +54,7 @@ const Login = () => {
                     name='email' 
                     type='text'
                     placeholder='Email'
-                    className='w-[30vw] border-2 mb-10 text-black'
+                    className='w-[30vw] border-2 mb-10 bg-black'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
@@ -64,7 +65,7 @@ const Login = () => {
                     name='password'
                     type='password'
                     placeholder='Password'
-                    className='w-[30vw] border-2 mb-10 text-black'
+                    className='w-[30vw] border-2 mb-10 bg-black'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} 
                 />
