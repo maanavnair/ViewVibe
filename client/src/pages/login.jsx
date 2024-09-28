@@ -43,7 +43,7 @@ const Login = () => {
   return (
     <div className='flex'>
         <form onSubmit={handleSubmit} 
-            className='flex py-5 flex-col w-[50vw] justify-center items-center'
+            className='flex py-5 flex-col w-full justify-center items-center'
         >
             <h1 className='text-2xl font-bold text-center font-sans mb-10'>
                 ViewVibe
@@ -80,9 +80,9 @@ const Login = () => {
                 </Link>
             </span>
         </form>
-        <div className='w-[50vw] min-h-screen bg-orange-100 flex justify-center items-center'>
+        {/* <div className='w-[50vw] min-h-screen bg-orange-100 flex justify-center items-center'>
             <img src={loginImage} />
-        </div>
+        </div> */}
     </div>
   )
 }

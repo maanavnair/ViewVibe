@@ -53,11 +53,11 @@ const Signup = () => {
 
   return (
     <div className='flex'>
-      <div className='w-[50vw] min-h-screen flex items-center justify-center bg-orange-100'>
+      {/* <div className='w-[50vw] min-h-screen flex items-center justify-center bg-orange-100'>
         <img src={signupImage} />
-      </div>
+      </div> */}
       <form onSubmit={handleSubmit} 
-            className='flex py-5 flex-col w-[50vw] justify-center items-center'
+            className='flex py-5 flex-col w-full justify-center items-center'
         >
             <h1 className='text-2xl font-bold text-center font-sans mb-5'>
                 ViewVibe
