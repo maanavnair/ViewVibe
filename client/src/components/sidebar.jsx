@@ -20,7 +20,6 @@ const Sidebar = () => {
             if(data.error){
                 throw new Error('Error while Logging out');
             }
-            //localStorage.removeItem('user');
             setUser(null);
         }
         catch(error){

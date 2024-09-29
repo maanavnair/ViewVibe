@@ -43,7 +43,6 @@ const Signup = () => {
         throw new Error(data.error);
       }
       await setUser(data);
-      //localStorage.setItem('user', JSON.stringify(data));
       navigate('/');
     }
     catch(error){
