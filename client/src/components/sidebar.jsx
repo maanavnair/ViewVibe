@@ -1,11 +1,12 @@
 import { UserContext } from '@/context/userContext';
 import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
 
 const Sidebar = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
     const {user, setUser} = useContext(UserContext);
 
     const handleLogout = async () => {
@@ -27,22 +28,24 @@ const Sidebar = () => {
         }
     }
 
+    const isActive = (path) => location.pathname === path;
+
   return (
     <div className='w-[15vw] min-h-screen flex flex-col items-center py-5 bg-gray-800'>
         <span 
-            className='hover:bg-gray-900 w-full text-center py-5 cursor-pointer' 
+            className={`hover:bg-gray-900 w-full text-center py-5 cursor-pointer ${isActive('/') ? 'bg-gray-900' : ''}`} 
             onClick={() => navigate('/')}
         >
             <h1>Home</h1>
         </span>
         <span 
-            className='hover:bg-gray-900 w-full text-center py-5 cursor-pointer'
+            className={`hover:bg-gray-900 w-full text-center py-5 cursor-pointer ${isActive(`/myvideos/${user?._id}`) ? 'bg-gray-900' : ''}`}
             onClick={() => navigate(`/myvideos/${user._id}`)}
         >
             <h1>My Videos</h1>
         </span>
         <span 
-            className='hover:bg-gray-900 w-full text-center py-5 cursor-pointer' 
+            className={`hover:bg-gray-900 w-full text-center py-5 cursor-pointer ${isActive('/upload') ? 'bg-gray-900' : ''}`}
             onClick={() => navigate('/upload')}
         >
             <h1>Upload</h1>
