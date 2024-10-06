@@ -80,70 +80,70 @@ const Upload = () => {
     }
 
   return (
-    <div className='py-5 min-h-screen'>
-        <h1 className='text-2xl text-center font-bold mb-10'>
-            Upload
-        </h1>
-        <form 
-            onSubmit={handleSubmit}
-            className='flex flex-col items-center justify-center'
-            >
-            <span className='flex flex-col'>
-                <label htmlFor='video-name' className='mb-1' >Video Title</label>
-                <Input 
-                    name='video-name'
-                    placeholder='Video Title...'
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className='w-[80vw] border-2 px-2 py-2 mb-5 bg-black'
-                />
-            </span>
-            <span className='flex flex-col'>
-                <label htmlFor='video-desc' className='mb-1'>Video Description</label>
-                <Textarea 
-                    name='video-desc'
-                    placeholder='Video Description...'
-                    value={desc}
-                    onChange={(e) => setDesc(e.target.value)}
-                    className='w-[80vw] border-2 px-2 py-2 mb-5 bg-black'
-                />
-            </span>
-            <span className='flex flex-col'>
-                <label htmlFor='video' className='mb-1'>Upload Video</label>
-                <Input
-                name='video'
-                type="file"
-                accept="video/*"
-                onChange={(e) => handleFileChange(e, 'video')}
-                className='w-[80vw] border-2 px-2 py-2 mb-5 bg-black'
-                />
-            </span>
-            <span className='flex flex-col'>
-                <label htmlFor='thumbnail' className='mb-1'>Upload Thumbnail</label>
-                <Input
-                name='thumbnail'
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleFileChange(e, 'thumbnail')}
-                className='w-[80vw] border-2 px-2 py-2 mb-5 bg-black'
-                />
-            </span>
-            {!loading && 
-            <Button className='w-[80vw] bg-blue-500 hover:bg-blue-600'>
-                <span className='flex items-center text-xl'>
-                    Upload
-                    <MdFileUpload className='ml-1' />
+    <div className='py-5 min-h-screen bg-black text-white flex justify-center'>
+        <div className='w-full max-w-lg p-5 rounded-lg bg-gray-900 shadow-md'>
+            <h1 className='text-3xl font-bold text-center mb-8'>Upload Video</h1>
+            <form 
+                onSubmit={handleSubmit}
+                className='flex flex-col'
+                >
+                <span className='flex flex-col mb-5'>
+                    <label htmlFor='video-name' className='mb-2 text-lg font-semibold' >Video Title</label>
+                    <Input 
+                        name='video-name'
+                        placeholder='Enter video title...'
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className='w-full px-4 py-2 border-2 border-gray-600 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none'
+                    />
                 </span>
-            </Button>
-            }
-            {loading && 
-                <Button disabled className='w-[80vw] bg-blue-500 hover:bg-blue-600 text-white'>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <span className='flex flex-col mb-5'>
+                    <label htmlFor='video-desc' className='mb-2 text-lg font-semibold'>Video Description</label>
+                    <Textarea 
+                        name='video-desc'
+                        placeholder='Enter video description...'
+                        value={desc}
+                        onChange={(e) => setDesc(e.target.value)}
+                        className='w-full px-4 py-2 border-2 border-gray-600 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none'
+                    />
+                </span>
+                <span className='flex flex-col mb-5'>
+                    <label htmlFor='video' className='mb-2 text-lg font-semibold'>Upload Video</label>
+                    <Input
+                    name='video'
+                    type="file"
+                    accept="video/*"
+                    onChange={(e) => handleFileChange(e, 'video')}
+                    className='w-full px-4 py-2 border-2 border-gray-600 rounded-lg bg-gray-800 text-white focus:outline-none'
+                    />
+                </span>
+                <span className='flex flex-col mb-5'>
+                    <label htmlFor='thumbnail' className='mb-2 text-lg font-semibold'>Upload Thumbnail</label>
+                    <Input
+                    name='thumbnail'
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handleFileChange(e, 'thumbnail')}
+                    className='w-full px-4 py-2 border-2 border-gray-600 rounded-lg bg-gray-800 text-white focus:outline-none'
+                    />
+                </span>
+                {!loading && 
+                <Button className='w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg'>
+                    <span className='flex items-center justify-center text-xl'>
+                        Upload
+                        <MdFileUpload className='ml-2' />
+                    </span>
                 </Button>
-            }
-        </form>
+                }
+                {loading && 
+                    <Button disabled className='w-full py-3 bg-blue-600 text-white font-bold rounded-lg'>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    </Button>
+                }
+            </form>
+        </div>
     </div>
   )
 }
 
-export default Upload
+export default Upload;
